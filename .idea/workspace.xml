@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="Added Main Class test">
-      <change afterPath="$PROJECT_DIR$/src/assignment/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="Created Word Class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +77,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665014329612</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created Word Class">
+      <created>1665015455860</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665015455860</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created Word Class">
+      <created>1665015543219</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665015543219</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Main Class test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Main Class test" />
+    <MESSAGE value="Created Word Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Word Class" />
   </component>
 </project>
