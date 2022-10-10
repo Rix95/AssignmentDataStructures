@@ -6,26 +6,31 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ArrayList<Sentence> arraySentence = parseSentences("src/data/tiny1.txt");
+        ArrayList<String> arrayLines = parseLines("src/data/tiny1.txt");
         ArrayList<Word> wordSentence = new ArrayList<>();
 
-        for(Sentence sentence : arraySentence){
-            System.out.println(sentence.getSentence());
+        for(String s: arrayLines){
+            System.out.println(s);
             System.out.println("///////////");
         }
 
     }
 
-    public static ArrayList<Sentence> parseSentences(String textFile) throws IOException {
+    public static ArrayList<String> parseLines(String textFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile));
         String line;
-        ArrayList<Sentence> arraySentence = new ArrayList<>();
+        ArrayList<String> arrayLines = new ArrayList<>();
         while ((line = bufferedReader.readLine()) != null) {
            //System.out.println(line);
            //System.out.println("/////////////////////");
-            arraySentence.add(new Sentence(line));
+            arrayLines.add(new String(line));
         }
-        return arraySentence;
+        return arrayLines;
     }
 
+    public static ArrayList<Sentence> parseSentences(ArrayList<String> arrayLines){
+
+
+
+    }
 }
