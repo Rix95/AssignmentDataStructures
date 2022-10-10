@@ -1,18 +1,15 @@
 package assignment;
-
 import java.io.*;
 import java.sql.Array;
 import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {
         ArrayList<Sentence> arraySentence = parseSentences("src/data/tiny1.txt");
         ArrayList<Word> wordSentence = new ArrayList<>();
 
-//        for (int i=0; i < arraySentence.size(); i++){
-//            System.out.println(arraySentence.get(i).getSentence());
-//            System.out.println("///////////");
-//        }
+       }
 
         for (Sentence sentence : arraySentence){
             System.out.println(sentence.getSentence());
@@ -20,6 +17,7 @@ public class Main {
         }
 
     }
+
 
     public static ArrayList<Sentence> parseSentences(String textFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile));
