@@ -9,15 +9,12 @@ public class Main {
         ArrayList<Sentence> arraySentence = parseSentences("src/data/tiny1.txt");
         ArrayList<Word> wordSentence = new ArrayList<>();
 
-       }
-
-        for (Sentence sentence : arraySentence){
+        for(Sentence sentence : arraySentence){
             System.out.println(sentence.getSentence());
             System.out.println("///////////");
         }
 
     }
-
 
     public static ArrayList<Sentence> parseSentences(String textFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile));
