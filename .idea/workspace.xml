@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="We are learning to do stuff" />
-=======
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="testing stuff" />
->>>>>>> Stashed changes
-=======
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="its the truth">
-      <change afterPath="$PROJECT_DIR$/src/assignment/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Word.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Sentence.java" afterDir="false" />
     </list>
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,18 +132,15 @@
     <MESSAGE value="Added Main Class test" />
     <MESSAGE value="Created Word Class" />
     <MESSAGE value="We are learning to do stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="We are learning to do stuff" />
+    <MESSAGE value="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/assignment/Main.java</url>
-<<<<<<< Updated upstream
-          <line>18</line>
-=======
-          <line>23</line>
->>>>>>> Stashed changes
+          <line>33</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
