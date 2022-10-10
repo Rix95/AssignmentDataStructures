@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="We are learning to do stuff" />
 =======
     <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="testing stuff" />
+>>>>>>> Stashed changes
+=======
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="its the truth">
+      <change afterPath="$PROJECT_DIR$/src/assignment/Sentence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Word.java" afterDir="false" />
+    </list>
 >>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +149,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/assignment/Main.java</url>
+<<<<<<< Updated upstream
           <line>18</line>
+=======
+          <line>23</line>
+>>>>>>> Stashed changes
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
