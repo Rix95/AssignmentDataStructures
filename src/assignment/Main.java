@@ -6,7 +6,7 @@ public class Main {
     //What about backwards?
     //Learning Javadabadu
     public static void main(String[] args) {
-        Word the = new Word("marissa is awesome");
+        Word the = new Word("marissa is awesome, meow meow");
         System.out.println(the.getGlobalFrequency());
 
     }
