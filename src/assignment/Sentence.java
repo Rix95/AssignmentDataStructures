@@ -2,12 +2,16 @@ package assignment;
 
 public class Sentence {
 
-    protected String sentence;
-    public Sentence(String sentence){
+    protected StringBuilder sentence;
+    public Sentence(StringBuilder sentence){
+
         this.sentence = sentence;
     }
 
-    public String getSentence(){
+    public StringBuilder getSentence(){
+
         return this.sentence;
     }
+
+
 }
