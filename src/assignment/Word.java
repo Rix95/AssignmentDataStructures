@@ -1,20 +1,25 @@
 package assignment;
 
+import java.util.ArrayList;
+
 public class Word {
 
-    private String word;
-    //Track globalFrequency
-    private int globalFrequency = 0;
-
-    public Word(String word){
-
+    StringBuilder word;
+    private int totalWordFrequency;
+    protected ArrayList<Sentence> sentenceWWord;
+    public Word (StringBuilder word, Sentence sentence) {
         this.word = word;
+        totalWordFrequency = 1;
     }
 
-    public int getGlobalFrequency() {
-
-        return globalFrequency;
+    public int getTotalFrequency() {
+        return totalWordFrequency;
     }
+
+    public void incrementWordFrequency() {
+        totalWordFrequency++;
+    }
+
 
 
 
