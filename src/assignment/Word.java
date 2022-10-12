@@ -10,13 +10,13 @@ public class Word {
     protected static ArrayList<Word> ListOfAllWords = new ArrayList<>();
     public Word (StringBuilder word, Sentence sentence) {
         this.word = word;
-        WordFrequency = 1;
+        totalWordFrequency = 1;
         sentencesWithWord.add(sentence);
         ListOfAllWords.add(this);
     }
 
     public int getTotalFrequency() {
-        return WordFrequency;
+        return totalWordFrequency;
     }
 
     public void incrementWordFrequency() {
