@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Word.java" afterDir="false" />
-    </list>
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="changed some variable names" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +39,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment.Main" />
       <module name="Assignment1" />
@@ -72,8 +68,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665439024250</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed parseSentence">
+      <created>1665533354760</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665533354760</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed some variable names">
+      <created>1665603441604</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665603441604</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +169,9 @@
     <MESSAGE value="Created Word Class" />
     <MESSAGE value="We are learning to do stuff" />
     <MESSAGE value="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Sentence parser, assign to arraySentence arrayList&lt;Sentence&gt;" />
+    <MESSAGE value="fixed parseSentence" />
+    <MESSAGE value="Word consistency" />
+    <MESSAGE value="changed some variable names" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed some variable names" />
   </component>
 </project>

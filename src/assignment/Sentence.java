@@ -7,8 +7,8 @@ public class Sentence {
 
     private StringBuilder sentence;
     private ArrayList<ArrayList<Object>> wordFrequencyInSentenceList = new ArrayList<>();
-    private int highestFrequency = 0;
-    ArrayList<Word> wordsWithHighestFrequency = new ArrayList<>();
+    private int HighestFrequencyInSentenceValue = 0;
+    ArrayList<Word> wordsWithHighestFrequencyInSentence = new ArrayList<>();
 
     public Sentence(StringBuilder sentence){
         this.sentence = sentence;
@@ -30,18 +30,18 @@ public class Sentence {
             wordFrequencyInSentenceList.add(new ArrayList<>(Arrays.asList(word, currentFreq)));
         }
         //Update Frequencies and wordsWithHighestFrequency!
-        if(currentFreq > highestFrequency){ //If current Frequency
-            highestFrequency = currentFreq;
-            wordsWithHighestFrequency.clear();
-            wordsWithHighestFrequency.add(word);
-        } else if(currentFreq == highestFrequency){  //If the word
-            wordsWithHighestFrequency.add(word);
+        if(currentFreq > HighestFrequencyInSentenceValue){ //If current Frequency
+            HighestFrequencyInSentenceValue = currentFreq;
+            wordsWithHighestFrequencyInSentence.clear();
+            wordsWithHighestFrequencyInSentence.add(word);
+        } else if(currentFreq == HighestFrequencyInSentenceValue){  //If the word
+            wordsWithHighestFrequencyInSentence.add(word);
         }
 
     }
 
-    public int getHighestFrequency(){
-        return highestFrequency;
+    public int getHighestFrequencyInSentenceValue(){
+        return HighestFrequencyInSentenceValue;
     }
 
 
