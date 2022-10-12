@@ -41,25 +41,23 @@ public class Main {
         ArrayList<Sentence> arraySentences = new ArrayList<>();
 
         for(String s : arrayLines){
-            //System.out.println(sentence);
-            //System.out.println("//");
+            //System.out.println(s.length());
             for(int i =0; i < s.length(); i++){
-               //System.out.println(s.charAt(i));
-                if(s.charAt(i) == '.'){
-                    System.out.println(sentence);
+                //System.out.println(sentence);
+                if (s.charAt(i) == '.'){
+                    // System.out.println("Hello there sentence is "  + sentence + "char is" + s.charAt(i));
                     arraySentences.add(new Sentence(sentence));
                     sentence = new StringBuilder();
-                   // System.out.println("/////");
                 }
-                else
+                else{
                     sentence.append(s.charAt(i));
-                    if (i == s.length() - 1){
-
-              //         System.out.println("this is when i pass");
-                        arraySentences.add(new Sentence(sentence));
-                        sentence = new StringBuilder();
-                    }
+                }
             }
+            if (sentence.length() != 0){
+                arraySentences.add(new Sentence(sentence));
+                sentence = new StringBuilder();
+            }
+
         }
         return arraySentences;
     }
