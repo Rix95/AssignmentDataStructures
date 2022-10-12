@@ -1,6 +1,7 @@
 package assignment;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class Word {
 
@@ -37,6 +38,34 @@ public class Word {
     public String toString() {
         return word.toString();
     }
+
+    public void nthMostFrequentWord(int n) {
+        int counter = 0;
+        ArrayList<String> words = new ArrayList<>();
+        PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
+        for(Word word : ListOfAllWords) {
+            priorityQueue.add(word);
+        }
+        int currentFreq = priorityQueue.peek().getTotalFrequency();
+
+        while(n != 0) {
+
+            if (priorityQueue.peek().getTotalFrequency() == currentFreq) {
+                words.add(priorityQueue.poll().toString());
+            }
+            else
+            {
+                n--;
+                words.clear();
+                currentFreq = priorityQueue.peek().getTotalFrequency();
+
+        }
+
+
+
+        }
+    }
+
 
 
 
