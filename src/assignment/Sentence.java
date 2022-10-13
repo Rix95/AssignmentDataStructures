@@ -6,9 +6,9 @@ import java.util.Arrays;
 public class Sentence {
 
     private String sentence;
-    private ArrayList<ArrayList<Object>> wordFrequencyInSentenceList = new ArrayList<>();
-    private int HighestFrequencyInSentenceValue = 0;
-    ArrayList<Word> wordsWithHighestFrequencyInSentence = new ArrayList<>();
+    protected ArrayList<ArrayList<Object>> wordFrequencyInSentenceList = new ArrayList<>();
+    protected int HighestFrequencyInSentenceValue = 0;
+    protected ArrayList<Word> wordsWithHighestFrequencyInSentence = new ArrayList<>();
 
     public Sentence(String sentence){
         this.sentence = sentence;

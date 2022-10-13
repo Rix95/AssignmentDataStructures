@@ -16,9 +16,9 @@ public class Main {
 //        }
 
         ArrayList<Sentence> arraySentences = parseSentences(arrayLines);
-        System.out.println(arraySentences.size());
+        //System.out.println(arraySentences.size());
         for (Sentence s : arraySentences) {
-            System.out.println(s.getSentence());
+            //System.out.println(s.getSentence());
         }
     }
 

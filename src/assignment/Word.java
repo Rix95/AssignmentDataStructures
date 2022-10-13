@@ -17,21 +17,24 @@ public class Word implements Comparable<Word>{
     }
 
     public static void addWord(String newWord, Sentence currentSentence){
+        boolean found = false;
+        Word wordToAdd = null;
         for(Word word : listOfAllWords){
-            Word toAdd;
+
             //If it already exists we should increase its total frequency.
             if (word.toString().equals(newWord)){
-                toAdd = word;
                 word.totalWordFrequency++;
+                found = true;
+                wordToAdd = word;
             }
             //If word is not in list of words.
-            else{
-                toAdd = new Word(newWord);
-            }
-            //add to the current list of words for current sentence.
-            currentSentence.addWordWithFrequency(toAdd);
-        }
 
+        }
+        if(found == false){
+            wordToAdd = new Word(newWord);
+        }
+        //add to the current list of words for current sentence.
+        currentSentence.addWordWithFrequency(wordToAdd);
     }
 
     public int getTotalFrequency() {
