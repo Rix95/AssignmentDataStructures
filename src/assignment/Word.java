@@ -9,18 +9,36 @@ public class Word implements Comparable<Word>{
     private int totalWordFrequency;
     protected ArrayList<Sentence> sentencesWithWord = new ArrayList<>();
     protected static ArrayList<Word> listOfAllWords = new ArrayList<>();
-    public Word (String word, Sentence sentence) {
+    public Word (String word) {
         this.word = word;
         totalWordFrequency = 1;
-        sentencesWithWord.add(sentence);
+        //sentencesWithWord.add(sentence); not being used atm
         listOfAllWords.add(this);
+    }
+
+    public void addWord(String newWord, Sentence currentSentence){
+        for(Word word : listOfAllWords){
+            Word toAdd;
+            //If it already exists we should increase its total frequency.
+            if (word.toString().equals(newWord)){
+                toAdd = word;
+                word.totalWordFrequency++;
+            }
+            //If word is not in list of words.
+            else{
+                toAdd = new Word(newWord);
+            }
+            //add to the current list of words for current sentence.
+            currentSentence.addWordWithFrequency(toAdd);
+        }
+
     }
 
     public int getTotalFrequency() {
         return totalWordFrequency;
     }
 
-    public void incrementWordFrequency() {
+    public void incrementTotalWordFrequency() {
         totalWordFrequency++;
     }
     
@@ -69,7 +87,5 @@ public class Word implements Comparable<Word>{
     public String toString() {
         return word.toString();
     }
-
-
 
 }
