@@ -7,23 +7,27 @@ public class Test {
         Sentence sentence3 = new Sentence("i am very very good");
         Sentence sentence4 = new Sentence("i am way way better");
         Word.addWord("the",sentence1);
+
+        Word.addWord("the",sentence1);
+        Word.addWord("the",sentence1);
+//        System.out.println(sentence1.HighestFrequencyInSentenceValue);
+//        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
+        Word.addWord("lol",sentence1);
+        Word.addWord("lol",sentence1);
+//        System.out.println(sentence1.HighestFrequencyInSentenceValue);
+//        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
+        Word.addWord("lol",sentence1);
+//        System.out.println(sentence1.HighestFrequencyInSentenceValue);
+//        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
+        Word.addWord("lol",sentence1);
+//        System.out.println(sentence1.HighestFrequencyInSentenceValue);
+//        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
+
         for (Word word : Word.listOfAllWords){
             System.out.println(word.toString());
         }
-        Word.addWord("the",sentence1);
-        Word.addWord("the",sentence1);
-        System.out.println(sentence1.HighestFrequencyInSentenceValue);
-        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
-        Word.addWord("lol",sentence1);
-        Word.addWord("lol",sentence1);
-        System.out.println(sentence1.HighestFrequencyInSentenceValue);
-        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
-        Word.addWord("lol",sentence1);
-        System.out.println(sentence1.HighestFrequencyInSentenceValue);
-        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
-        Word.addWord("lol",sentence1);
-        System.out.println(sentence1.HighestFrequencyInSentenceValue);
-        System.out.println(sentence1.wordsWithHighestFrequencyInSentence);
+
+        Word.nthMostFrequentWord(1);
     }
 }
 

@@ -60,7 +60,7 @@ public class Word implements Comparable<Word>{
     public int compareTo(Word word){
         return word.totalWordFrequency > this.totalWordFrequency ? 1 : -1;
     }
-    public void nthMostFrequentWord(int ranking) {
+    public static void nthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
@@ -82,6 +82,10 @@ public class Word implements Comparable<Word>{
         //Then we poll the last element and add it, after finding one with a smaller value we end the loop
         while(currentFreq == priorityQueue.peek().totalWordFrequency){
             words.add(priorityQueue.poll().toString());
+        }
+
+        for(String wordsFound: words) {
+            System.out.println(wordsFound);
         }
 
         }
