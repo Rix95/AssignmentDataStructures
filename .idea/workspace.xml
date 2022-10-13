@@ -178,4 +178,15 @@
     <MESSAGE value="changed some variable names" />
     <option name="LAST_COMMIT_MESSAGE" value="changed some variable names" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment/Word.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
