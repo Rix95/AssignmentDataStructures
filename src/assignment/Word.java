@@ -16,7 +16,7 @@ public class Word implements Comparable<Word>{
         listOfAllWords.add(this);
     }
 
-    public void addWord(String newWord, Sentence currentSentence){
+    public static void addWord(String newWord, Sentence currentSentence){
         for(Word word : listOfAllWords){
             Word toAdd;
             //If it already exists we should increase its total frequency.
@@ -48,7 +48,7 @@ public class Word implements Comparable<Word>{
 
     public Sentence getSentencesWithHighestFrequency(ArrayList<Sentence> sentenceWord){
         //This currently does not work
-        Sentence sentence = new Sentence( new StringBuilder());
+        Sentence sentence = new Sentence( new String());
         return sentence;
     }
 

@@ -42,14 +42,14 @@ public class Main {
         for (String s : arrayLines) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '.') {
-                    arraySentences.add(new Sentence(sentence));
+                    arraySentences.add(new Sentence(sentence.toString()));
                     sentence = new StringBuilder();
                 } else {
                     sentence.append(s.charAt(i));
                 }
             }
             if (sentence.length() != 0) {
-                arraySentences.add(new Sentence(sentence));
+                arraySentences.add(new Sentence(sentence.toString()));
                 sentence = new StringBuilder();
             }
 
