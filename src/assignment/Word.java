@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class Word implements Comparable<Word>{
 
+    static int rankingFrequency;
     String word;
     private int totalWordFrequency;
     protected ArrayList<Sentence> sentencesWithWord = new ArrayList<>();
@@ -60,7 +61,7 @@ public class Word implements Comparable<Word>{
     public int compareTo(Word word){
         return word.totalWordFrequency > this.totalWordFrequency ? 1 : -1;
     }
-    public static void nthMostFrequentWord(int ranking) {
+    public static ArrayList<String> nthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
@@ -71,24 +72,23 @@ public class Word implements Comparable<Word>{
         //<5,5,5,3,1>
         //Until we reach to our desired ranking
         while (ranking != 1 && !priorityQueue.isEmpty()) {
-            if (priorityQueue.peek().totalWordFrequency == currentFreq){
+            if (priorityQueue.peek().totalWordFrequency == currentFreq) {
+                rankingFrequency = priorityQueue.peek().totalWordFrequency;
                 priorityQueue.poll();
-            }
-            else{
+            } else {
                 ranking--;
                 currentFreq = priorityQueue.peek().totalWordFrequency;
+
             }
+            rankingFrequency = priorityQueue.peek().totalWordFrequency;
+        }
         //Once We take words with higher priority we proceed to add the ones we desire.
         //Then we poll the last element and add it, after finding one with a smaller value we end the loop
-        while(currentFreq == priorityQueue.peek().totalWordFrequency){
+        while(priorityQueue.peek() != null && currentFreq == priorityQueue.peek().totalWordFrequency){
             words.add(priorityQueue.poll().toString());
         }
+        return words;
 
-        for(String wordsFound: words) {
-            System.out.println(wordsFound);
-        }
-
-        }
     }
     @Override
     public String toString() {
