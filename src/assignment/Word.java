@@ -1,18 +1,19 @@
 package assignment;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
-public class Word {
+public class Word implements Comparable<Word>{
 
-    StringBuilder word;
+    String word;
     private int totalWordFrequency;
     protected ArrayList<Sentence> sentencesWithWord = new ArrayList<>();
-    protected static ArrayList<Word> ListOfAllWords = new ArrayList<>();
-    public Word (StringBuilder word, Sentence sentence) {
+    protected static ArrayList<Word> listOfAllWords = new ArrayList<>();
+    public Word (String word, Sentence sentence) {
         this.word = word;
         totalWordFrequency = 1;
         sentencesWithWord.add(sentence);
-        ListOfAllWords.add(this);
+        listOfAllWords.add(this);
     }
 
     public int getTotalFrequency() {
@@ -33,6 +34,37 @@ public class Word {
         return sentence;
     }
 
+
+    @Override
+    public int compareTo(Word word){
+        return word.totalWordFrequency > this.totalWordFrequency ? 1 : -1;
+    }
+    public void nthMostFrequentWord(int ranking) {
+        //int counter = 0; Not being used atm
+        ArrayList<String> words = new ArrayList<>();
+        PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
+        for(Word word : listOfAllWords) {
+            priorityQueue.add(word);
+        }
+        int currentFreq = priorityQueue.peek().totalWordFrequency;
+        //<5,5,5,3,1>
+        //Until we reach to our desired ranking
+        while (ranking != 1 && !priorityQueue.isEmpty()) {
+            if (priorityQueue.peek().totalWordFrequency == currentFreq){
+                priorityQueue.poll();
+            }
+            else{
+                ranking--;
+                currentFreq = priorityQueue.peek().totalWordFrequency;
+            }
+        //Once We take words with higher priority we proceed to add the ones we desire.
+        //Then we poll the last element and add it, after finding one with a smaller value we end the loop
+        while(currentFreq == priorityQueue.peek().totalWordFrequency){
+            words.add(priorityQueue.poll().toString());
+        }
+
+        }
+    }
     @Override
     public String toString() {
         return word.toString();

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="changed some variable names" />
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="changed some variable names">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Sentence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment/Word.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

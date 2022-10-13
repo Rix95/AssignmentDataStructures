@@ -37,7 +37,6 @@ public class Sentence {
         } else if(currentFreq == HighestFrequencyInSentenceValue){  //If the word
             wordsWithHighestFrequencyInSentence.add(word);
         }
-
     }
 
     public int getHighestFrequencyInSentenceValue(){
