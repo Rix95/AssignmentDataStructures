@@ -80,8 +80,9 @@ public class Word implements Comparable<Word>{
                 currentFreq = priorityQueue.peek().totalWordFrequency;
 
             }
-            rankingFrequency = priorityQueue.peek().totalWordFrequency;
+
         }
+        rankingFrequency = priorityQueue.peek().totalWordFrequency;
         //Once We take words with higher priority we proceed to add the ones we desire.
         //Then we poll the last element and add it, after finding one with a smaller value we end the loop
         while(priorityQueue.peek() != null && currentFreq == priorityQueue.peek().totalWordFrequency){

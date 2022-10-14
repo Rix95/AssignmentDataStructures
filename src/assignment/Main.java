@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ArrayList<String> arrayLines = parseLines("src/data/tiny1.txt");
+        ArrayList<String> arrayLines = parseLines("src/data/tiny2.txt");
         ArrayList<Sentence> arraySentences = parseSentences(arrayLines);
         parseWords(arraySentences);
         
@@ -37,7 +37,7 @@ public class Main {
             }
         }
 
-        for(String words : Word.nthMostFrequentWord(3)){
+        for(String words : Word.nthMostFrequentWord(1)){
             System.out.println(words);
         }
         System.out.println(Word.rankingFrequency);
