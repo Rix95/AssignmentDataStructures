@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class Sentence {
 
-    private StringBuilder sentence;
-    private ArrayList<ArrayList<Object>> wordFrequencyInSentenceList = new ArrayList<>();
-    private int HighestFrequencyInSentenceValue = 0;
-    ArrayList<Word> wordsWithHighestFrequencyInSentence = new ArrayList<>();
+    private String sentence;
+    protected ArrayList<ArrayList<Object>> wordFrequencyInSentenceList = new ArrayList<>();
+    protected int HighestFrequencyInSentenceValue = 0;
+    protected ArrayList<Word> wordsWithHighestFrequencyInSentence = new ArrayList<>();
 
-    public Sentence(StringBuilder sentence){
+    public Sentence(String sentence){
         this.sentence = sentence;
     }
 
@@ -56,7 +56,7 @@ public class Sentence {
     //Method to check if a word is in a sentence
 
     //Return Sentence
-    public StringBuilder getSentence(){
+    public String getSentence(){
         return this.sentence;
     }
 
@@ -83,6 +83,10 @@ public class Sentence {
         return wordFrequencyInSentenceList;
     }
 
+    @Override
+    public String toString() {
+        return this.sentence;
+    }
 
 
 }

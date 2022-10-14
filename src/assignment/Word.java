@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class Word implements Comparable<Word>{
 
+    static int rankingFrequency;
     String word;
     private int totalWordFrequency;
     protected ArrayList<Sentence> sentencesWithWord = new ArrayList<>();
@@ -16,22 +17,25 @@ public class Word implements Comparable<Word>{
         listOfAllWords.add(this);
     }
 
-    public void addWord(String newWord, Sentence currentSentence){
+    public static void addWord(String newWord, Sentence currentSentence){
+        boolean found = false;
+        Word wordToAdd = null;
         for(Word word : listOfAllWords){
-            Word toAdd;
+
             //If it already exists we should increase its total frequency.
             if (word.toString().equals(newWord)){
-                toAdd = word;
                 word.totalWordFrequency++;
+                found = true;
+                wordToAdd = word;
             }
             //If word is not in list of words.
-            else{
-                toAdd = new Word(newWord);
-            }
-            //add to the current list of words for current sentence.
-            currentSentence.addWordWithFrequency(toAdd);
-        }
 
+        }
+        if(found == false){
+            wordToAdd = new Word(newWord);
+        }
+        //add to the current list of words for current sentence.
+        currentSentence.addWordWithFrequency(wordToAdd);
     }
 
     public int getTotalFrequency() {
@@ -48,7 +52,7 @@ public class Word implements Comparable<Word>{
 
     public Sentence getSentencesWithHighestFrequency(ArrayList<Sentence> sentenceWord){
         //This currently does not work
-        Sentence sentence = new Sentence( new StringBuilder());
+        Sentence sentence = new Sentence( new String());
         return sentence;
     }
 
@@ -57,7 +61,7 @@ public class Word implements Comparable<Word>{
     public int compareTo(Word word){
         return word.totalWordFrequency > this.totalWordFrequency ? 1 : -1;
     }
-    public void nthMostFrequentWord(int ranking) {
+    public static ArrayList<String> nthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
@@ -68,20 +72,23 @@ public class Word implements Comparable<Word>{
         //<5,5,5,3,1>
         //Until we reach to our desired ranking
         while (ranking != 1 && !priorityQueue.isEmpty()) {
-            if (priorityQueue.peek().totalWordFrequency == currentFreq){
+            if (priorityQueue.peek().totalWordFrequency == currentFreq) {
+                rankingFrequency = priorityQueue.peek().totalWordFrequency;
                 priorityQueue.poll();
-            }
-            else{
+            } else {
                 ranking--;
                 currentFreq = priorityQueue.peek().totalWordFrequency;
+
             }
+            rankingFrequency = priorityQueue.peek().totalWordFrequency;
+        }
         //Once We take words with higher priority we proceed to add the ones we desire.
         //Then we poll the last element and add it, after finding one with a smaller value we end the loop
-        while(currentFreq == priorityQueue.peek().totalWordFrequency){
+        while(priorityQueue.peek() != null && currentFreq == priorityQueue.peek().totalWordFrequency){
             words.add(priorityQueue.poll().toString());
         }
+        return words;
 
-        }
     }
     @Override
     public String toString() {
