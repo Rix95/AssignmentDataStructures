@@ -83,6 +83,10 @@ public class Sentence {
         return wordFrequencyInSentenceList;
     }
 
+    @Override
+    public String toString() {
+        return this.sentence;
+    }
 
 
 }
