@@ -14,14 +14,17 @@ public class WordParser {
     public static void printOutputToFiles(String outputName) throws FileNotFoundException {
         //1 & 2
         createFile("nthRanking", outputName, "1", "1");
+        System.out.println("//////////");
         createFile("nthRanking",outputName, "2", "3");
+        System.out.println("//////////");
         //3
         createFile("wordHighestFreqSentence", outputName, "3");
+        System.out.println("//////////");
         //4, 5, 6
         createFile("sentencesWithMaxWord",outputName, "4",  "the");
         createFile("sentencesWithMaxWord",outputName, "5",  "of");
         createFile("sentencesWithMaxWord",outputName, "6",  "was");
-
+        System.out.println("//////////");
         //7, 8, 9
         createFile("sentencesWithMaxPhrase",  outputName, "7",  "but the");
         createFile("sentencesWithMaxPhrase",  outputName, "8",  "it was");
@@ -41,9 +44,10 @@ public class WordParser {
                 System.out.println(":" + Word.rankingFrequency);
             }
             case "wordHighestFreqSentence" -> {
+                System.out.println("Frequency: " + Sentence.getSentencesWithHighestWordFrequency().get(0).HighestFrequencyInSentenceValue);
                 for(Sentence sentence : Sentence.getSentencesWithHighestWordFrequency()){
                     for (Word wordy : sentence.wordsWithHighestFrequencyInSentence){
-                        System.out.println(wordy + ":" + sentence.HighestFrequencyInSentenceValue + ":" + sentence);
+                        System.out.println(wordy + ":" + sentence);
                     }
                 }
             }
@@ -211,7 +215,7 @@ class Word implements Comparable<Word>{
         listOfAllWords.add(this);
     }
 
-    //Core Function, this add words, update frequency, also bind words to sentences
+    //Core Function, this adds words, update frequency, also bind words to sentences
     public static void addWord(String newWord, Sentence currentSentence){
         boolean found = false;
         Word wordToAdd = null;
