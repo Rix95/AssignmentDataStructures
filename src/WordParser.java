@@ -38,32 +38,35 @@ public class WordParser {
             //1-2 problem
             case "nthRanking" -> {
                 for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
-                    System.out.println(words);
-
+                writer.write(words + "\n");
                 }
+                writer.close();
             }
             //3 problem
             case "wordHighestFreqSentence" -> {
                 for(Sentence sentence : Sentence.getSentencesWithMostFrequentWords()){
                     for (String wordInSentence : sentence.wordsWithHighestFrequencyInSentence){
-                        System.out.println(wordInSentence);
+                    writer.write(wordInSentence + "\n");
                     }
+                    writer.close();
                 }
             }
             //4-6
             case "sentencesWithMaxWord" -> {
                 for (String maxWordSentence : Sentence.getSentencesWithMaximumWordOccurrences(parameters[1])){
-                    System.out.println(maxWordSentence);
+                    writer.write(maxWordSentence + "\n");
                 }
+                writer.close();
             }
             case "sentencesWithMaxPhrase" -> System.out.println("Coming soon");
             default -> System.out.println("Method not found");
+
         }
     }
 }
 
 class Sentence {
-
+    // sentence class to hold strings and array lists
     private final String sentence;
     private ArrayList<ArrayList<Object>> wordWithFrequencyInSentenceList = new ArrayList<>();
     protected int HighestFrequencyInSentenceValue = 0;
@@ -76,6 +79,7 @@ class Sentence {
         this.sentence = sentence;
     }
 
+    // constructor for array list parseLines and new bufferedReader to read from other files while they are full
     public static ArrayList<String> parseLines(String textFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile));
         String line;
@@ -85,6 +89,7 @@ class Sentence {
         }
         return arrayLines;
     }
+    // constructor for parseSentences to read through each sentence in the arraylist
     public static void parseSentences(ArrayList<String> arrayLines) {
 
         StringBuilder sentence = new StringBuilder();
@@ -108,6 +113,7 @@ class Sentence {
             }
         }
     }
+    // constructor for parseWords to read words and add them to a stringBuilder if they meet certain requirements
     public static void parseWords(String textFile) throws IOException {
         parseSentences(parseLines(textFile));
         StringBuilder wordBuilder = new StringBuilder();
@@ -168,6 +174,7 @@ class Sentence {
             }
         }
     }
+    // constructor to find certain words
     public static Word findWordInListOfAllWords(String wordString){
         for (Word word : Word.listOfAllWords) {
             if (word.toString().equals(wordString)) {
@@ -176,6 +183,7 @@ class Sentence {
         }
         return null;
     }
+    // finds words and their frequency
     public ArrayList<Object> findWordWithFrequencyInSentence(Word wordToBeFound){
         for (ArrayList<Object> wordWithFrequency : wordWithFrequencyInSentenceList) {
             if (wordWithFrequency.get(0) == wordToBeFound) {
@@ -186,7 +194,7 @@ class Sentence {
         return null;
     }
 
-
+    // arrayList with the most frequent words
     public static ArrayList<Sentence> getSentencesWithMostFrequentWords () {
         ArrayList<Sentence> sentencesWithHighestWordFrequency = new ArrayList<>();
         int highest = 0;
@@ -202,6 +210,7 @@ class Sentence {
         return sentencesWithHighestWordFrequency;
     }
 
+    // finds sentences with max word occurrences
     public static ArrayList<String> getSentencesWithMaximumWordOccurrences (String word){
         Word wordToFind = findWordInListOfAllWords(word);
         ArrayList<String> maximumOccurrences = new ArrayList<>();
@@ -233,7 +242,7 @@ class Sentence {
         return this.sentence;
     }
     }
-
+/// ranks most frequent words
 class Word implements Comparable<Word>{
 
     private static int rankingFrequency;
