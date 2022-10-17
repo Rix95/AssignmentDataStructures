@@ -30,16 +30,19 @@ public class WordParser {
     }
 
     //Creates a file based on the requested elements and function name
-    public static void createFile(String function, String outputName, String ... parameters ) throws FileNotFoundException {
+    public static void createFile(String function, String outputName, String ... parameters ) throws IOException {
         //writer to create files
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputName+parameters[0])));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputName+parameters[0] + ".txt")));
 
         switch (function) {
+            //1-2 problem
             case "nthRanking" -> {
                 for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
                     System.out.println(words + ":" + Word.rankingFrequency);
+
                 }
             }
+            //3 problem
             case "wordHighestFreqSentence" -> {
                 for(Sentence sentence : Sentence.getSentencesWithMostFrequentWords()){
                     for (Word wordInSentence : sentence.wordsWithHighestFrequencyInSentence){
@@ -47,12 +50,13 @@ public class WordParser {
                     }
                 }
             }
+            //4-6
             case "sentencesWithMaxWord" -> {
-                for (String test : Sentence.getSentencesWithMaximumWordOccurrences(parameters[1])){
-                    System.out.println(test);
+                for (String maxWordSentence : Sentence.getSentencesWithMaximumWordOccurrences(parameters[1])){
+                    System.out.println(maxWordSentence);
                 }
             }
-            case "sentencesWithMaxPhrase" -> System.out.println("4");
+            case "sentencesWithMaxPhrase" -> System.out.println("Coming soon");
             default -> System.out.println("Method not found");
         }
     }
