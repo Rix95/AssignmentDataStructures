@@ -67,6 +67,7 @@ class Sentence {
     private final String sentence;
     private ArrayList<ArrayList<Object>> wordWithFrequencyInSentenceList = new ArrayList<>();
     protected int HighestFrequencyInSentenceValue = 0;
+    protected ArrayList<Word> wordsWithHighestFrequencyInSentence1 = new ArrayList<>();
     protected ArrayList<String> wordsWithHighestFrequencyInSentence = new ArrayList<>();
     protected static ArrayList<Sentence> listOfSentences= new ArrayList<>();
 
