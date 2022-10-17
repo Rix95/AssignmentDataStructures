@@ -227,6 +227,46 @@ class Sentence {
     public String toString () {
         return this.sentence;
     }
+
+    public static int findSubstringFrequency(String sentence, String substring){
+       int frequency = 0;
+        int ptr1 = 0;
+       int ptr2 = 0;
+       while(ptr1 <= (sentence.length() - substring.length())){
+           //if substring is found
+           if(ptr2== substring.length()){
+               frequency++;
+               ptr2 =0;
+           }
+           else if (sentence.charAt(ptr1) == substring.charAt(ptr2)){
+               ptr1++;
+               ptr2++;
+           }
+           else
+               ptr1++;
+           ptr2 = 0;
+       }
+       return frequency;
+    }
+
+    public static ArrayList<String> findHighestFrequency(String substring){
+        int highestFrequency = 0;
+        int currentFrequency;
+         ArrayList<String> list = new ArrayList<>();
+
+        for(Sentence sentence: listOfSentences){
+            currentFrequency = findSubstringFrequency(sentence.toString(), substring);
+            if (currentFrequency > highestFrequency){
+                highestFrequency = currentFrequency;
+                list.clear();
+                list.add(substring + ":" + currentFrequency + ":" + sentence);
+            }
+            else if(currentFrequency == highestFrequency){
+                list.add(substring + ":" + currentFrequency + ":" + sentence);
+            }
+        }
+        return list;
+        }
     }
 
 class Word implements Comparable<Word>{
