@@ -9,30 +9,27 @@ public class WordParser {
         //Initiate the program
         Sentence.parseWords(args[0]);
         //
-        printOutputToFiles(args[1]);
         //String[] testCases = [[]]
-    }
-    public static void printOutputToFiles(String outputName) throws FileNotFoundException {
         //1 & 2
-        createFile("nthRanking", outputName, "1", "1");
+        createFile("nthRanking", args[1], "1", "1");
         System.out.println("//////////2");
-        createFile("nthRanking",outputName, "2", "3");
+        createFile("nthRanking",args[1], "2", "3");
         System.out.println("//////////3");
         //3
-        createFile("wordHighestFreqSentence", outputName, "3");
+        createFile("wordHighestFreqSentence", args[1], "3");
         System.out.println("//////////4-6");
         //4, 5, 6
-        createFile("sentencesWithMaxWord",outputName, "4",  "the");
-        createFile("sentencesWithMaxWord",outputName, "5",  "of");
-        createFile("sentencesWithMaxWord",outputName, "6",  "was");
+        createFile("sentencesWithMaxWord",args[1], "4",  "the");
+        createFile("sentencesWithMaxWord",args[1], "5",  "of");
+        createFile("sentencesWithMaxWord",args[1], "6",  "was");
         System.out.println("//////////7-9");
         //7, 8, 9
-        createFile("sentencesWithMaxPhrase",  outputName, "7",  "but the");
-        createFile("sentencesWithMaxPhrase",  outputName, "8",  "it was");
-        createFile("sentencesWithMaxPhrase",  outputName, "9",  "in my");
-
+        createFile("sentencesWithMaxPhrase",  args[1], "7",  "but the");
+        createFile("sentencesWithMaxPhrase",  args[1], "8",  "it was");
+        createFile("sentencesWithMaxPhrase",  args[1], "9",  "in my");
     }
-    //Creates a file based on the requested query
+
+    //Creates a file based on the requested elements and function name
     public static void createFile(String function, String outputName, String ... parameters ) throws FileNotFoundException {
         //writer to create files
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputName+parameters[0])));
@@ -40,9 +37,8 @@ public class WordParser {
         switch (function) {
             case "nthRanking" -> {
                 for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
-                    System.out.print(words);
+                    System.out.println(words + ":" + Word.rankingFrequency);
                 }
-                System.out.println(":" + Word.rankingFrequency);
             }
             case "wordHighestFreqSentence" -> {
                 for(Sentence sentence : Sentence.getSentencesWithMostFrequentWords()){
@@ -111,10 +107,8 @@ class Sentence {
         parseSentences(parseLines(textFile));
         StringBuilder wordBuilder = new StringBuilder();
 
-
         for (Sentence sentence : Sentence.listOfSentences){
             for(int i = 0; i < sentence.toString().length(); i++){
-                //System.out.println(s.charAt(i));
                 if(Character.isWhitespace(sentence.toString().charAt(i))) {
                     Sentence.addWord(wordBuilder.toString(), sentence);
                     wordBuilder = new StringBuilder();
@@ -132,7 +126,7 @@ class Sentence {
 
     //addWord, increase frequency if already found
     public static void addWord(String newWord, Sentence currentSentence) {
-        Word wordToAdd =  findWordInListOfWords(newWord);
+        Word wordToAdd =  findWordInListOfAllWords(newWord);
         if (wordToAdd == null) {
             wordToAdd = new Word(newWord);
         }
@@ -164,12 +158,12 @@ class Sentence {
                 HighestFrequencyInSentenceValue = currentFreq;
                 wordsWithHighestFrequencyInSentence.clear();
                 wordsWithHighestFrequencyInSentence.add(word);
-            } else if (currentFreq == HighestFrequencyInSentenceValue) {   //If its the same just add
+            } else if (currentFreq == HighestFrequencyInSentenceValue) {   //If it is the same just add
                 wordsWithHighestFrequencyInSentence.add(word);
             }
         }
     }
-    public static Word findWordInListOfWords(String wordString){
+    public static Word findWordInListOfAllWords(String wordString){
         for (Word word : Word.listOfAllWords) {
             if (word.toString().equals(wordString)) {
                 return word;
@@ -204,7 +198,7 @@ class Sentence {
     }
 
     public static ArrayList<String> getSentencesWithMaximumWordOccurrences (String word){
-        Word wordToFind = findWordInListOfWords(word);
+        Word wordToFind = findWordInListOfAllWords(word);
         ArrayList<String> maximumOccurrences = new ArrayList<>();
         int maxFrequency = 0;
         for(Sentence sentence : listOfSentences){
@@ -225,20 +219,8 @@ class Sentence {
         return maximumOccurrences;
     }
 
-//    public static ArrayList<Sentence> getSentencesWithMaximumSubstrsingOcurrences()  {
-//        ArrayList<Sentence> sentencesWithHighestWordFrequency = new ArrayList<>();
-//        int highest = 0;
-//        for(Sentence sentence : Sentence.listOfSentences){
-//            if (sentence.HighestFrequencyInSentenceValue > highest) {
-//                highest = sentence.HighestFrequencyInSentenceValue;
-//                sentencesWithHighestWordFrequency.clear();
-//                sentencesWithHighestWordFrequency.add(sentence);
-//            }
-//            else if(sentence.HighestFrequencyInSentenceValue == highest) {
-//                sentencesWithHighestWordFrequency.add(sentence);
-//            }
-//        }
-//        return sentencesWithHighestWordFrequency;
+//    public static ArrayList<Sentence> getSentencesWithMaximumSubstrsingOcurrences(String substring)  {
+
 //    }
 
     @Override
