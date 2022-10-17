@@ -39,7 +39,7 @@ public class WordParser {
             case "nthRanking" -> {
                 for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
                     System.out.println(words + ":" + Word.rankingFrequency);
-                    writer.write(Word.rankingFrequency);
+                    writer.write("hi");
                     writer.close();
                 }
             }
