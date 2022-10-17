@@ -31,18 +31,19 @@ public class WordParser {
 
     //Creates a file based on the requested elements and function name
     public static void createFile(String function, String outputName, String ... parameters ) throws IOException {
-        //writer to create files
+        //writer.txt to create files
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputName+parameters[0] + ".txt")));
 
         switch (function) {
-            //1-2 problem
+            //problem 1-2, printing out the most frequent word along with its sentence and frequency
             case "nthRanking" -> {
                 for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
                     System.out.println(words + ":" + Word.rankingFrequency);
-
+                    writer.write(Word.rankingFrequency);
+                    writer.close();
                 }
             }
-            //3 problem
+            //Problem 3, printing out the sentence with highest frequency of a word
             case "wordHighestFreqSentence" -> {
                 for(Sentence sentence : Sentence.getSentencesWithMostFrequentWords()){
                     for (Word wordInSentence : sentence.wordsWithHighestFrequencyInSentence){
@@ -50,12 +51,13 @@ public class WordParser {
                     }
                 }
             }
-            //4-6
+            // Printing out the sentences with the most words
             case "sentencesWithMaxWord" -> {
                 for (String maxWordSentence : Sentence.getSentencesWithMaximumWordOccurrences(parameters[1])){
                     System.out.println(maxWordSentence);
                 }
             }
+            //printing out sentences with the max frequency of a phrase
             case "sentencesWithMaxPhrase" -> System.out.println("Coming soon");
             default -> System.out.println("Method not found");
         }
@@ -63,7 +65,7 @@ public class WordParser {
 }
 
 class Sentence {
-
+    // creating strings and arrayLists
     private final String sentence;
     private ArrayList<ArrayList<Object>> wordWithFrequencyInSentenceList = new ArrayList<>();
     protected int HighestFrequencyInSentenceValue = 0;
@@ -75,6 +77,7 @@ class Sentence {
         this.sentence = sentence;
     }
 
+    // arrayList for parseLines that will save each line
     public static ArrayList<String> parseLines(String textFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(textFile));
         String line;
@@ -84,8 +87,9 @@ class Sentence {
         }
         return arrayLines;
     }
+    // arrayList for parseSentences that will save each sentence
     public static void parseSentences(ArrayList<String> arrayLines) {
-
+        // new StringBuilder to store sentences
         StringBuilder sentence = new StringBuilder();
         for (String s : arrayLines) {
             for (int i = 0; i < s.length(); i++) {
@@ -107,6 +111,7 @@ class Sentence {
             }
         }
     }
+    // parseWords, method to read each word
     public static void parseWords(String textFile) throws IOException {
         parseSentences(parseLines(textFile));
         StringBuilder wordBuilder = new StringBuilder();
@@ -167,6 +172,7 @@ class Sentence {
             }
         }
     }
+    // method to find specific words
     public static Word findWordInListOfAllWords(String wordString){
         for (Word word : Word.listOfAllWords) {
             if (word.toString().equals(wordString)) {
@@ -175,6 +181,7 @@ class Sentence {
         }
         return null;
     }
+    // method to find specific sentences and their frequency
     public ArrayList<Object> findWordWithFrequencyInSentence(Word wordToBeFound){
         for (ArrayList<Object> wordWithFrequency : wordWithFrequencyInSentenceList) {
             if (wordWithFrequency.get(0) == wordToBeFound) {
@@ -185,7 +192,7 @@ class Sentence {
         return null;
     }
 
-
+    // method to get the sentences with highest frequency and retrieve them from the Sentence array
     public static ArrayList<Sentence> getSentencesWithMostFrequentWords () {
         ArrayList<Sentence> sentencesWithHighestWordFrequency = new ArrayList<>();
         int highest = 0;
@@ -201,6 +208,7 @@ class Sentence {
         return sentencesWithHighestWordFrequency;
     }
 
+    // method to get the sentences with max words
     public static ArrayList<String> getSentencesWithMaximumWordOccurrences (String word){
         Word wordToFind = findWordInListOfAllWords(word);
         ArrayList<String> maximumOccurrences = new ArrayList<>();
@@ -235,6 +243,7 @@ class Sentence {
 
 class Word implements Comparable<Word>{
 
+    // creating names for different variables and a new arrayList for all words
     protected static int rankingFrequency;
     private final String word;
     protected int totalWordFrequency;
@@ -245,6 +254,7 @@ class Word implements Comparable<Word>{
         //sentencesWithWord.add(sentence); not being used atm
         listOfAllWords.add(this);
     }
+    // method to rank the most frequent words
     public static ArrayList<String> nthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
