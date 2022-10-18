@@ -24,9 +24,9 @@ public class WordParser {
         createFile("sentencesWithMaxWord",args[1], "6",  "was");
         System.out.println("//////////7-9");
         //7, 8, 9
-        createFile("sentencesWithMaxPhrase",  args[1], "7",  "but the");
+        //createFile("sentencesWithMaxPhrase",  args[1], "7",  "but the");
         createFile("sentencesWithMaxPhrase",  args[1], "8",  "it was");
-        createFile("sentencesWithMaxPhrase",  args[1], "9",  "in my");
+        //createFile("sentencesWithMaxPhrase",  args[1], "9",  "in my");
     }
 
     //Creates a file based on the requested elements and function name
@@ -48,8 +48,8 @@ public class WordParser {
                     for (String wordInSentence : sentence.wordsWithHighestFrequencyInSentence){
                     writer.write(wordInSentence + "\n");
                     }
-                    writer.close();
                 }
+                writer.close();
             }
             //4-6
             case "sentencesWithMaxWord" -> {
@@ -58,7 +58,12 @@ public class WordParser {
                 }
                 writer.close();
             }
-            case "sentencesWithMaxPhrase" -> System.out.println("Coming soon");
+            case "sentencesWithMaxPhrase" -> {
+                for (String maxSubstringSentence : Sentence.findHighestFrequency(parameters[1])) {
+                    writer.write(maxSubstringSentence + "\n") ;
+                }
+                writer.close();
+            }
             default -> System.out.println("Method not found");
 
         }
@@ -243,11 +248,11 @@ class Sentence {
     }
 
     public static int findSubstringFrequency(String sentence, String substring){
+       System.out.println(sentence);
        int frequency = 0;
         int ptr1 = 0;
        int ptr2 = 0;
        while(ptr1 <= (sentence.length() - substring.length())){
-           //if substring is found
            if(ptr2== substring.length()){
                frequency++;
                ptr2 =0;
@@ -256,9 +261,10 @@ class Sentence {
                ptr1++;
                ptr2++;
            }
-           else
+           else {
                ptr1++;
-           ptr2 = 0;
+               ptr2 = 0;
+           }
        }
        return frequency;
     }
