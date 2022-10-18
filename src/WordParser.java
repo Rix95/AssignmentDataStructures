@@ -12,21 +12,18 @@ public class WordParser {
         //String[] testCases = [[]]
         //1 & 2
         createFile("nthRanking", args[1], "1", "1");
-        System.out.println("//////////2");
         createFile("nthRanking",args[1], "2", "3");
-        System.out.println("//////////3");
         //3
         createFile("wordHighestFreqSentence", args[1], "3");
-        System.out.println("//////////4-6");
         //4, 5, 6
         createFile("sentencesWithMaxWord",args[1], "4",  "the");
         createFile("sentencesWithMaxWord",args[1], "5",  "of");
         createFile("sentencesWithMaxWord",args[1], "6",  "was");
-        System.out.println("//////////7-9");
         //7, 8, 9
-        //createFile("sentencesWithMaxPhrase",  args[1], "7",  "but the");
+        createFile("sentencesWithMaxPhrase",  args[1], "7",  "but the");
         createFile("sentencesWithMaxPhrase",  args[1], "8",  "it was");
-        //createFile("sentencesWithMaxPhrase",  args[1], "9",  "in my");
+        createFile("sentencesWithMaxPhrase",  args[1], "9",  "in my");
+        System.out.println("9 output files created successfully.");
     }
 
     //Creates a file based on the requested elements and function name
@@ -59,13 +56,11 @@ public class WordParser {
                 writer.close();
             }
             case "sentencesWithMaxPhrase" -> {
-                for (String maxSubstringSentence : Sentence.findHighestFrequency(parameters[1])) {
+                for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstrsingOccurrences(parameters[1])) {
                     writer.write(maxSubstringSentence + "\n") ;
                 }
                 writer.close();
             }
-            default -> System.out.println("Method not found");
-
         }
     }
 }
@@ -138,10 +133,11 @@ class Sentence {
                 wordBuilder = new StringBuilder();
             }
         }
+        System.out.println(Word.listOfAllWords.size() + " Unique Words parsed successfully from " + Sentence.listOfSentences.size() + " sentences.");
     }
 
     //addWord, increase frequency if already found
-    public static void addWord(String newWord, Sentence currentSentence) {
+    private static void addWord(String newWord, Sentence currentSentence) {
         Word wordToAdd =  findWordInListOfAllWords(newWord);
         if (wordToAdd == null) {
             wordToAdd = new Word(newWord);
@@ -150,11 +146,11 @@ class Sentence {
         else{
             wordToAdd.totalWordFrequency++;
         }
-        currentSentence.addWordWithFrequency(wordToAdd);
+        currentSentence.addWordWithFrequencyInSentence(wordToAdd);
     }
 
     //Core Function, this adds words, update frequency, also bind words to sentences
-    public void addWordWithFrequency (Word word){
+    private void addWordWithFrequencyInSentence(Word word){
 
         ArrayList<Object> wordWithFrequency = findWordWithFrequencyInSentence(word);
         if (wordWithFrequency == null) {
@@ -167,20 +163,23 @@ class Sentence {
         } else {
             int currentFreq = (int) wordWithFrequency.get(1) + 1;
             wordWithFrequency.set(1, currentFreq);
-
             //Update Frequencies and wordsWithHighestFrequency!
             //If the current freq is higher, then start list again.
-            if (currentFreq > HighestFrequencyInSentenceValue) {
-                HighestFrequencyInSentenceValue = currentFreq;
-                wordsWithHighestFrequencyInSentence.clear();
-                wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
-            } else if (currentFreq == HighestFrequencyInSentenceValue) {   //If it is the same just add
-                wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
-            }
+            updateHighestFrequencyInSentence(currentFreq, word);
+        }
+
+    }
+    private void updateHighestFrequencyInSentence(int currentFreq, Word word){
+        if (currentFreq > HighestFrequencyInSentenceValue) {
+            HighestFrequencyInSentenceValue = currentFreq;
+            wordsWithHighestFrequencyInSentence.clear();
+            wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
+        } else if (currentFreq == HighestFrequencyInSentenceValue) {   //If it is the same just add
+            wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
         }
     }
     // constructor to find certain words
-    public static Word findWordInListOfAllWords(String wordString){
+    private static Word findWordInListOfAllWords(String wordString){
         for (Word word : Word.listOfAllWords) {
             if (word.toString().equals(wordString)) {
                 return word;
@@ -189,18 +188,38 @@ class Sentence {
         return null;
     }
     // finds words and their frequency
-    public ArrayList<Object> findWordWithFrequencyInSentence(Word wordToBeFound){
+    private ArrayList<Object> findWordWithFrequencyInSentence(Word wordToBeFound){
         for (ArrayList<Object> wordWithFrequency : wordWithFrequencyInSentenceList) {
             if (wordWithFrequency.get(0) == wordToBeFound) {
                 return wordWithFrequency;
             }
         }
-
         return null;
     }
 
-    // arrayList with the most frequent words
-    public static ArrayList<Sentence> getSentencesWithMostFrequentWords () {
+    private static int findSubstringFrequency(String sentence, String substring){
+        int frequency = 0;
+        int ptr1 = 0;
+        int ptr2 = 0;
+        while(ptr1 <= (sentence.length() - substring.length())){
+            if(ptr2== substring.length()){
+                frequency++;
+                ptr2 =0;
+            }
+            else if (sentence.charAt(ptr1) == substring.charAt(ptr2)){
+                ptr1++;
+                ptr2++;
+            }
+            else {
+                ptr1++;
+                ptr2 = 0;
+            }
+        }
+        return frequency;
+    }
+
+    // arrayList with sentences with the most frequent words
+    protected static ArrayList<Sentence> getSentencesWithMostFrequentWords() {
         ArrayList<Sentence> sentencesWithHighestWordFrequency = new ArrayList<>();
         int highest = 0;
         for (Sentence sentence : Sentence.listOfSentences) {
@@ -216,12 +235,12 @@ class Sentence {
     }
 
     // finds sentences with max word occurrences
-    public static ArrayList<String> getSentencesWithMaximumWordOccurrences (String word){
+    protected static ArrayList<String> getSentencesWithMaximumWordOccurrences(String word){
         Word wordToFind = findWordInListOfAllWords(word);
         ArrayList<String> maximumOccurrences = new ArrayList<>();
         int maxFrequency = 0;
         for(Sentence sentence : listOfSentences){
-            //use findWord.... to retrieve the word and its frequency, then compare to the current max frequency, if its bigger clear the list and start adding again updtaing maxFrequency value
+            //use findWord.... to retrieve the word and its frequency, then compare to the current max frequency, if its bigger clear the list and start adding again updating maxFrequency value
           //  System.out.print(sentence);
             ArrayList<Object> existingWord = sentence.findWordWithFrequencyInSentence(wordToFind);
             if (existingWord != null){
@@ -238,60 +257,34 @@ class Sentence {
         return maximumOccurrences;
     }
 
-//    public static ArrayList<Sentence> getSentencesWithMaximumSubstrsingOcurrences(String substring)  {
+    public static ArrayList<String> getSentencesWithMaximumSubstrsingOccurrences(String substring)  {
+        int highestFrequency = 0;
+        int currentFrequency;
+        ArrayList<String> sentencesWithHighestSubstringFrequency = new ArrayList<>();
 
-//    }
+        for(Sentence sentence: listOfSentences){
+            currentFrequency = findSubstringFrequency(sentence.toString(), substring);
+            if (currentFrequency > highestFrequency){
+                highestFrequency = currentFrequency;
+                sentencesWithHighestSubstringFrequency.clear();
+                sentencesWithHighestSubstringFrequency.add(substring + ":" + currentFrequency + ":" + sentence);
+            }
+            else if(currentFrequency == highestFrequency){
+                sentencesWithHighestSubstringFrequency.add(substring + ":" + currentFrequency + ":" + sentence);
+            }
+        }
+        return sentencesWithHighestSubstringFrequency;
+    }
 
     @Override
     public String toString () {
         return this.sentence;
     }
 
-    public static int findSubstringFrequency(String sentence, String substring){
-       System.out.println(sentence);
-       int frequency = 0;
-        int ptr1 = 0;
-       int ptr2 = 0;
-       while(ptr1 <= (sentence.length() - substring.length())){
-           if(ptr2== substring.length()){
-               frequency++;
-               ptr2 =0;
-           }
-           else if (sentence.charAt(ptr1) == substring.charAt(ptr2)){
-               ptr1++;
-               ptr2++;
-           }
-           else {
-               ptr1++;
-               ptr2 = 0;
-           }
-       }
-       return frequency;
-    }
 
-    public static ArrayList<String> findHighestFrequency(String substring){
-        int highestFrequency = 0;
-        int currentFrequency;
-         ArrayList<String> list = new ArrayList<>();
-
-        for(Sentence sentence: listOfSentences){
-            currentFrequency = findSubstringFrequency(sentence.toString(), substring);
-            if (currentFrequency > highestFrequency){
-                highestFrequency = currentFrequency;
-                list.clear();
-                list.add(substring + ":" + currentFrequency + ":" + sentence);
-            }
-            else if(currentFrequency == highestFrequency){
-                list.add(substring + ":" + currentFrequency + ":" + sentence);
-            }
-        }
-        return list;
-        }
-    }
-/// ranks most frequent words
+}
 class Word implements Comparable<Word>{
 
-    private static int rankingFrequency;
     private final String word;
     protected int totalWordFrequency;
     protected static ArrayList<Word> listOfAllWords = new ArrayList<>();
@@ -310,6 +303,7 @@ class Word implements Comparable<Word>{
         int currentFreq = priorityQueue.peek().totalWordFrequency;
         //<5,5,5,3,1>
         //Until we reach to our desired ranking
+        int rankingFrequency;
         while (ranking != 1 && !priorityQueue.isEmpty()) {
             if (priorityQueue.peek().totalWordFrequency == currentFreq) {
                 rankingFrequency = priorityQueue.peek().totalWordFrequency;
