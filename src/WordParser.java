@@ -33,35 +33,33 @@ public class WordParser {
 
         switch (function) {
             //1-2 problem
-            case "nthRanking" -> {
-                for (String words : Word.nthMostFrequentWord(Integer.parseInt(parameters[1]))) {
+            case ("nthRanking") -> {
+                for (String words : Word.getNthMostFrequentWord(Integer.parseInt(parameters[1]))) {
                 writer.write(words + "\n");
                 }
-                writer.close();
+
             }
             //3 problem
-            case "wordHighestFreqSentence" -> {
+            case ("wordHighestFreqSentence") -> {
                 for(Sentence sentence : Sentence.getSentencesWithMostFrequentWords()){
                     for (String wordInSentence : sentence.wordsWithHighestFrequencyInSentence){
                     writer.write(wordInSentence + "\n");
                     }
                 }
-                writer.close();
             }
             //4-6
-            case "sentencesWithMaxWord" -> {
+            case ("sentencesWithMaxWord") -> {
                 for (String maxWordSentence : Sentence.getSentencesWithMaximumWordOccurrences(parameters[1])){
                     writer.write(maxWordSentence + "\n");
                 }
-                writer.close();
             }
-            case "sentencesWithMaxPhrase" -> {
+            case ("sentencesWithMaxPhrase") -> {
                 for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstrsingOccurrences(parameters[1])) {
                     writer.write(maxSubstringSentence + "\n") ;
                 }
-                writer.close();
             }
         }
+        writer.close();
     }
 }
 
@@ -294,7 +292,7 @@ class Word implements Comparable<Word>{
         //sentencesWithWord.add(sentence); not being used atm
         listOfAllWords.add(this);
     }
-    public static ArrayList<String> nthMostFrequentWord(int ranking) {
+    public static ArrayList<String> getNthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
