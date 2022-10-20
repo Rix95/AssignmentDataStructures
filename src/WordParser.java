@@ -200,20 +200,20 @@ class Sentence {
     // Method to find substring frequency in current sentence.
     private static int findSubstringFrequency(String sentence, String substring){
         int frequency = 0;
-        int ptr1 = 0;
-        int ptr2 = 0;
-        while(ptr1 <= (sentence.length() - substring.length())){
-            if(ptr2== substring.length()){
+        int sentencePointer = 0;
+        int substringPointer = 0;
+        while(sentencePointer <= (sentence.length() - substring.length())){
+            if(substringPointer== substring.length()){
                 frequency++;
-                ptr2 =0;
+                substringPointer =0;
             }
-            else if (sentence.charAt(ptr1) == substring.charAt(ptr2)){
-                ptr1++;
-                ptr2++;
+            else if (sentence.charAt(sentencePointer) == substring.charAt(substringPointer)){
+                sentencePointer++;
+                substringPointer++;
             }
             else {
-                ptr1++;
-                ptr2 = 0;
+                sentencePointer++;
+                substringPointer = 0;
             }
         }
         return frequency;
