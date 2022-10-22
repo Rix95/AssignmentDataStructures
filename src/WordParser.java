@@ -39,7 +39,7 @@ public class WordParser {
             //3 problem
             case ("wordHighestFreqSentence") -> {
                 for(Sentence sentence : Sentence.getSentencesWithHighestFrequentWords()){
-                    for (String wordInSentence : sentence.getWordsWithHighestFrequencyInSentence()){
+                    for (String wordInSentence : sentence.getListOfWordsWithHighestFrequencyInSentence()){
                         writer.write(wordInSentence + "\n");
                     }
                 }
@@ -50,21 +50,14 @@ public class WordParser {
                 writer.write(maxWordSentence + "\n");
                 }
             }
-<<<<<<< HEAD
-            case "sentencesWithMaxPhrase" -> {
-                for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstringOccurrences(parameters[1])) {
-=======
+
             //7-9
             case ("sentencesWithMaxPhrase") -> {
-                for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstrsingOccurrences(parameters[1])) {
->>>>>>> 6960d7e579055046f00cf8fe8c28ac1bf2b470f8
+                for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstringOccurrences(parameters[1])) {
                     writer.write(maxSubstringSentence + "\n") ;
                 }
             }
-<<<<<<< HEAD
             default -> System.out.println("Method not found");
-=======
->>>>>>> 6960d7e579055046f00cf8fe8c28ac1bf2b470f8
         }
         writer.close();
     }
@@ -75,8 +68,8 @@ class Sentence {
 
     private final String sentence;
     protected static ArrayList<Sentence> listOfSentences= new ArrayList<>();
-    private ArrayList<ArrayList<Object>> listOfWordsWithFrequencyInSentence = new ArrayList<>();
-    private ArrayList<String> wordsWithHighestFrequencyInSentence = new ArrayList<>();
+    private final ArrayList<ArrayList<Object>> listOfWordsWithFrequencyInSentence = new ArrayList<>();
+    private final ArrayList<String> listOfWordsWithHighestFrequencyInSentence = new ArrayList<>();
     private int highestWordFrequencyValueInSentence = 0;
 
 
@@ -152,11 +145,11 @@ class Sentence {
         else{
             wordToAdd.totalWordFrequency++;
         }
-        currentSentence.addWordsWithFrequencyInSentence(wordToAdd);
+        currentSentence.addWordWithFrequencyInSentence(wordToAdd);
     }
 
     //Method to add words to sentence, update their respective frequency.
-    private void addWordsWithFrequencyInSentence(Word word){
+    private void addWordWithFrequencyInSentence(Word word){
 
         ArrayList<Object> wordWithFrequency = findWordWithFrequencyInSentence(word);
         if (wordWithFrequency == null) {
@@ -179,10 +172,10 @@ class Sentence {
     private void updateHighestFrequencyInSentence(int currentFreq, Word word){
         if (currentFreq > highestWordFrequencyValueInSentence) {
             highestWordFrequencyValueInSentence = currentFreq;
-            wordsWithHighestFrequencyInSentence.clear();
-            wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
+            listOfWordsWithHighestFrequencyInSentence.clear();
+            listOfWordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
         } else if (currentFreq == highestWordFrequencyValueInSentence) {   //If it is the same just add
-            wordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
+            listOfWordsWithHighestFrequencyInSentence.add(word + ":" + currentFreq + ":" + sentence);
         }
     }
 
@@ -229,8 +222,8 @@ class Sentence {
     }
 
     //Getter method for words with the highest frequency in sentence.
-    protected ArrayList<String> getWordsWithHighestFrequencyInSentence(){
-        return wordsWithHighestFrequencyInSentence;
+    protected ArrayList<String> getListOfWordsWithHighestFrequencyInSentence(){
+        return listOfWordsWithHighestFrequencyInSentence;
     }
     // finds sentences with max word occurrences
 
@@ -272,40 +265,9 @@ class Sentence {
         }
         return maximumOccurrences;
     }
-<<<<<<< HEAD
-    @Override
-    public String toString () {
-        return this.sentence;
-    }
-
-    public static int findSubstringFrequency(String sentence, String substring){
-       System.out.println(sentence);
-       int frequency = 0;
-        int ptr1 = 0;
-       int ptr2 = 0;
-       while(ptr1 <= (sentence.length() - substring.length())){
-           if(ptr2== substring.length()){
-               frequency++;
-               ptr2 =0;
-           }
-           else if (sentence.charAt(ptr1) == substring.charAt(ptr2)){
-               ptr1++;
-               ptr2++;
-           }
-           else {
-               ptr1++;
-               ptr2 = 0;
-           }
-       }
-       return frequency;
-    }
-
-    public static ArrayList<String> getSentencesWithMaximumSubstringOccurrences(String substring){
-=======
 
     //Getter method for sentences with maximum occurrences of certain substring.
-    public static ArrayList<String> getSentencesWithMaximumSubstrsingOccurrences(String substring)  {
->>>>>>> 6960d7e579055046f00cf8fe8c28ac1bf2b470f8
+    public static ArrayList<String> getSentencesWithMaximumSubstringOccurrences(String substring)  {
         int highestFrequency = 0;
         int currentFrequency;
         ArrayList<String> sentencesWithHighestSubstringFrequency = new ArrayList<>();
@@ -349,13 +311,15 @@ class Word implements Comparable<Word>{
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
         priorityQueue.addAll(listOfAllWords);
 
-        int currentFreq = priorityQueue.peek().totalWordFrequency;
+        int currentFreq = 0;
+        if (priorityQueue.peek() != null) {
+            currentFreq = priorityQueue.peek().totalWordFrequency;
+        }
         //<5,5,5,3,1>
         //Until we reach to our desired ranking
         int rankingFrequency;
         while (ranking != 1 && !priorityQueue.isEmpty()) {
             if (priorityQueue.peek().totalWordFrequency == currentFreq) {
-                rankingFrequency = priorityQueue.peek().totalWordFrequency;
                 priorityQueue.poll();
             } else {
                 ranking--;
@@ -364,6 +328,7 @@ class Word implements Comparable<Word>{
             }
 
         }
+        assert priorityQueue.peek() != null;
         rankingFrequency = priorityQueue.peek().totalWordFrequency;
         //Once We take words with higher priority we proceed to add the ones we desire.
         //Then we poll the last element and add it, after finding one with a smaller value we end the loop
