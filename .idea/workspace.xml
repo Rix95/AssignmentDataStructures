@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="fixed ranking 1 bug">
       <change beforePath="$PROJECT_DIR$/src/WordParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WordParser.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="783a181f-163a-4d07-ab91-ffaef35cbdb3" name="Changes" comment="Improved grammar" />
+>>>>>>> 6960d7e579055046f00cf8fe8c28ac1bf2b470f8
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,11 +52,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Rical/Documents/Computer Science/Texas A&amp;M/1437/AssignmentDataStructures/src&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -63,7 +70,7 @@
   <component name="RunManager" selected="Application.WordParser">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="Assignment1" />
+      <module name="AssignmentDataStructures" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value=".*" />
@@ -74,10 +81,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WordParser" type="Application" factoryName="Application" temporary="true">
+    <configuration name="WordParser" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="WordParser" />
-      <module name="Assignment1" />
-      <option name="PROGRAM_PARAMETERS" value="tiny1.txt output" />
+      <module name="AssignmentDataStructures" />
+      <option name="PROGRAM_PARAMETERS" value="tiny2.txt output" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value=".*" />
@@ -110,12 +119,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Test" />
       <item itemvalue="Application.WordParser" />
+      <item itemvalue="Application.Test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WordParser" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -192,7 +200,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665716776816</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Improved code">
+      <created>1666065353322</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666065353322</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Improved grammar">
+      <created>1666150668423</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666150668423</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,17 +259,38 @@
     <MESSAGE value="Word consistency" />
     <MESSAGE value="changed some variable names" />
     <MESSAGE value="fixed ranking 1 bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed ranking 1 bug" />
+    <MESSAGE value="Improved code" />
+    <MESSAGE value="Improved grammar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved grammar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/WordParser.java</url>
+<<<<<<< HEAD
           <line>148</line>
           <option name="timeStamp" value="17" />
+=======
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WordParser.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WordParser.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="3" />
+>>>>>>> 6960d7e579055046f00cf8fe8c28ac1bf2b470f8
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
