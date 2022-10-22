@@ -59,13 +59,12 @@ public class WordParser {
                 writer.close();
             }
             case "sentencesWithMaxPhrase" -> {
-                for (String maxSubstringSentence : Sentence.findHighestFrequency(parameters[1])) {
+                for (String maxSubstringSentence : Sentence.getSentencesWithMaximumSubstringOccurrences(parameters[1])) {
                     writer.write(maxSubstringSentence + "\n") ;
                 }
                 writer.close();
             }
             default -> System.out.println("Method not found");
-
         }
     }
 }
@@ -237,11 +236,6 @@ class Sentence {
         }
         return maximumOccurrences;
     }
-
-//    public static ArrayList<Sentence> getSentencesWithMaximumSubstrsingOcurrences(String substring)  {
-
-//    }
-
     @Override
     public String toString () {
         return this.sentence;
@@ -269,7 +263,7 @@ class Sentence {
        return frequency;
     }
 
-    public static ArrayList<String> findHighestFrequency(String substring){
+    public static ArrayList<String> getSentencesWithMaximumSubstringOccurrences(String substring){
         int highestFrequency = 0;
         int currentFrequency;
          ArrayList<String> list = new ArrayList<>();
