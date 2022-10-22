@@ -32,7 +32,7 @@ public class WordParser {
         switch (function) {
             //1-2 problem
             case ("nthRanking") -> {
-                for (String words : Word.getNthMostFrequentWord(Integer.parseInt(parameters[1]))) {
+                for (String words : Word.getListOfNthMostFrequentWord(Integer.parseInt(parameters[1]))) {
                     writer.write(words + "\n");
                 }
             }
@@ -63,7 +63,9 @@ public class WordParser {
     }
 }
 
-// sentence class to hold frequency data to get outputs.
+/**
+ * Sentence class to hold sentences and their word frequencies.
+ * */
 class Sentence {
 
     private final String sentence;
@@ -74,7 +76,7 @@ class Sentence {
 
 
     //Constructor for sentence class
-    public Sentence(String sentence){
+    private Sentence(String sentence){
         this.sentence = sentence;
     }
 
@@ -294,18 +296,26 @@ class Sentence {
 
 
 }
+
+/**
+ * Word class to hold words and their total frequency.
+ * */
 class Word implements Comparable<Word>{
 
     private final String word;
     protected int totalWordFrequency;
     protected static ArrayList<Word> listOfAllWords = new ArrayList<>();
+
+    //Constructor method for word.
     public Word (String word) {
         this.word = word;
         totalWordFrequency = 1;
         //sentencesWithWord.add(sentence); not being used atm
         listOfAllWords.add(this);
     }
-    public static ArrayList<String> getNthMostFrequentWord(int ranking) {
+
+    //Method to get list of most frequent words based on ranking(1st, 2nd, 3rd, etc..)
+    protected static ArrayList<String> getListOfNthMostFrequentWord(int ranking) {
         //int counter = 0; Not being used atm
         ArrayList<String> words = new ArrayList<>();
         PriorityQueue<Word> priorityQueue = new PriorityQueue<>();
@@ -338,10 +348,13 @@ class Word implements Comparable<Word>{
         return words;
 
     }
+
+    //Overriding compareTo for total word frequency
     @Override
     public int compareTo(Word word){
         return word.totalWordFrequency > this.totalWordFrequency ? 1 : -1;
     }
+    //Overriding toString to display word
     @Override
     public String toString() {
         return word;
