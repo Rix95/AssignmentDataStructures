@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 
-public class WordParser {
+public class Team11_Assignment1 {
     public static void main(String[] args) throws IOException {
         //Initiate the program, parse words from file.
         Sentence.parseWords(args[0]);
